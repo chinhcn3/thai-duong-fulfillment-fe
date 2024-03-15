@@ -1,0 +1,54 @@
+{
+  "name": "wedding-frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "gen": "cd ./src/swagger-api && swagger-typescript-api -p ./swagger.json -o ./gen --templates ./templates --custom-config ./config.js --axios --union-enums --modular --single-http-client --clean-output --module-name-first-tag ",
+    "gen:remote": "curl -o ./src/swagger-api/swagger.json http://localhost:3000/swagger.json && yarn gen"
+  },
+  "dependencies": {
+    "@ant-design/cssinjs": "^1.18.1",
+    "antd": "^5.12.5",
+    "axios": "^1.6.3",
+    "cookie": "^0.6.0",
+    "dayjs": "^1.11.10",
+    "http-proxy": "^1.18.1",
+    "immer": "^10.0.3",
+    "js-cookie": "^3.0.5",
+    "lodash": "^4.17.21",
+    "next": "14.0.4",
+    "qs": "^6.11.2",
+    "react": "^18",
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.2",
+    "styled-components": "^6.1.3",
+    "swagger-typescript-api": "^13.0.3",
+    "use-debounce": "^10.0.0",
+    "virtualizedtableforantd4": "^1.3.1",
+    "zod": "^3.22.4",
+    "zustand": "^4.4.7"
+  },
+  "devDependencies": {
+    "@svgr/webpack": "^8.1.0",
+    "@types/cookie": "^0.6.0",
+    "@types/http-proxy": "^1.17.14",
+    "@types/js-cookie": "^3.0.6",
+    "@types/lodash": "^4.14.202",
+    "@types/node": "^20",
+    "@types/qs": "^6.9.12",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "babel-plugin-styled-components": "^2.1.4",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "file-loader": "^6.2.0",
+    "typescript": "^5"
+  },
+  "resolutions": {
+    "styled-components": "^5"
+  }
+}
