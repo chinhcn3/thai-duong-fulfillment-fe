@@ -47,8 +47,9 @@ const items: MenuProps['items'] = [
 ]
 
 const App: React.FC = () => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const onClick: MenuProps['onClick'] = (e) => {
-    console.log('click ', e)
+    // console.log('click ', e)
   }
 
   return (

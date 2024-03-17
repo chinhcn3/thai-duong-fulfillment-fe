@@ -1,11 +1,13 @@
 import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
+import { GlobalStyles } from '../../common/components/global-styles'
 import LeftMenu from './left-menu'
 
 export function AppLayout({ children }: PropsWithChildren<any>) {
   return (
     <LayoutWrapper>
+      <GlobalStyles />
       <LeftMenu />
       <PageContainer>{children} </PageContainer>
     </LayoutWrapper>

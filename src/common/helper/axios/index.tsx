@@ -7,10 +7,8 @@
 
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import qs from 'qs'
-import {serviceOptions} from "../../open-api/swagger.gen";
 
-import { setSessionCookie } from '../cookie'
-
+import { serviceOptions } from '../../open-api/swagger.gen'
 
 const defaultConfig: AxiosRequestConfig = {
   timeout: 180000,
@@ -27,14 +25,14 @@ export const getErrorCode = (error: any) =>
 
 const addRequestInterceptors = (axiosInstance: AxiosInstance) => {
   axiosInstance.interceptors.request.use(
-    (config) => {
+    config => {
       const csrfToken = localStorage.getItem('csrfToken')
       if (csrfToken && config.headers) {
         config.headers['X-CSRF-TOKEN'] = csrfToken
         config.headers['Access-Control-Allow-Origin'] = '*'
         config.headers['Accept-Language'] = 'ja-JP,ja-JP;q=0.9,en-US;q=0.8'
       }
-      config.paramsSerializer = (params) => {
+      config.paramsSerializer = params => {
         return qs.stringify(params, {
           arrayFormat: 'brackets',
         })
@@ -42,7 +40,7 @@ const addRequestInterceptors = (axiosInstance: AxiosInstance) => {
       return config
     },
     /* istanbul ignore next */
-    async (error) => {
+    async error => {
       // show toast
       return Promise.reject(error)
     }
@@ -52,8 +50,8 @@ const addRequestInterceptors = (axiosInstance: AxiosInstance) => {
 const addResponseInterceptors = (axiosInstance: AxiosInstance) => {
   const interceptorId = axiosInstance.interceptors.response.use(
     (response: AxiosResponse) => response,
-    async (error) => {
-   // process logic here
+    async error => {
+      // process logic here
 
       axiosInstance.interceptors.response.eject(interceptorId)
       try {

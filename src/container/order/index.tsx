@@ -52,7 +52,7 @@ export function Order() {
           ]}
         />
       </Space>
-      <Table dataSource={dataSource} columns={columns} style={{ marginTop: '20px' }} />;
+      <Table dataSource={dataSource} columns={columns} style={{ marginTop: '20px' }} />
     </OrderWrapper>
   )
 }
