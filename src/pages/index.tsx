@@ -1,10 +1,10 @@
-import { AppLayout } from '../container/app-layout'
-import { DashBoard } from '../container/dash-board'
+import { AppLayout } from '../containers/app-layout'
+import { DashBoardContainer } from '../containers/dash-board'
 
 export default function Page() {
   return (
     <AppLayout>
-      <DashBoard />
+      <DashBoardContainer />
     </AppLayout>
   )
 }

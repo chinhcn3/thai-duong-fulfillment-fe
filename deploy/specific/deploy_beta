@@ -1,0 +1,42 @@
+#!/bin/bash
+
+set -eu
+set -o pipefail
+
+APP_DIR=$(cd $(dirname $0)/.. && pwd)
+
+function register_task_definitions() {
+  ## declare an array variable
+  declare -a tasks_arr=("aweb_beta")
+
+  for i in "${tasks_arr[@]}"
+  do
+    NEW_TASKDEF=$(cat $APP_DIR/specific/task_definition_$i.json | envsubst)
+    echo "This is a new ${i} task definition"
+    echo $NEW_TASKDEF | jq .
+    echo $NEW_TASKDEF > /tmp/new_task_definition.json
+    echo "Registering ${i} task definition..."
+    if TASK_REGISTRATION_OUTPOUT=$(aws ecs register-task-definition --family "${ECS_SERVICE}_${i}" --cli-input-json file:///tmp/new_task_definition.json --region ${AWS_REGION}); then
+      echo "Successfully registering task"
+    else
+    echo "Failed to register task"
+    exit 1
+    fi
+  done
+}
+
+function deploy() {
+  echo "Updating service..."
+  ecs deploy ${ECS_CLUSTER} "${APP_NAME}" --task "${APP_NAME}" --region ${AWS_REGION}
+  echo "Waiting for service deployment to complete..."
+  aws ecs wait services-stable --cluster ${ECS_CLUSTER} --services "${APP_NAME}" --region ${AWS_REGION}
+}
+
+function create_cloudfront_invalidation() {
+  echo "Creating cloudfront invalidation"
+  aws cloudfront create-invalidation --distribution-id ${CLOUDFRONT_DISTRIBUTION_ID} --paths "/*" --region ${AWS_REGION}
+}
+
+register_task_definitions
+APP_NAME="${APP_NAME}_beta" deploy
+create_cloudfront_invalidation

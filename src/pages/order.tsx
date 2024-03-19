@@ -1,10 +1,10 @@
-import { AppLayout } from '../container/app-layout'
-import { Order } from '../container/order'
+import { AppLayout } from '../containers/app-layout'
+import { OrderContainer } from '../containers/order'
 
 export default function Page() {
   return (
     <AppLayout>
-      <Order />
+      <OrderContainer />
     </AppLayout>
   )
 }

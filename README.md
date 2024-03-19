@@ -1,46 +1,92 @@
-# Getting Started with Create React App
+[![CircleCI](https://circleci.com/gh/moneyforwardvietnam/pjc_frontend/tree/develop.svg?style=svg&circle-token=2a9ce746920c8c7a368282a6c6b4b62e4dfea123)](https://circleci.com/gh/moneyforwardvietnam/pjc_frontend/tree/develop)
+[![Coverage Status](https://coveralls.io/repos/github/moneyforwardvietnam/pjc_frontend/badge.svg?branch=develop&t=IVkH1r)](https://coveralls.io/github/moneyforwardvietnam/pjc_frontend?branch=develop)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# PJC Frontend
 
-## Available Scripts
+## Update submodule
 
-In the project directory, you can run:
+```
+  git submodule update --init --remote --merge
+```
 
-### `npm start`
+## How to develop
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+```bash
+  cp .env.development .env.local
+  yarn && yarn dev
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Setup VScode
 
-### `npm test`
+- setup extensions on Linux / Mac:
+  ```
+    cat .vscode/extensions | xargs -L 1 code --install-extension
+  ```
+- on Window:
+  ```
+    cat .vscode/extensions |% { code --install-extension $_}
+  ```
+- If you cannot run, maybe your vscode install is not correct
+    - setup your vscode path into environment
+    - Cmd+Shift+P (MAC) or Ctrl+Shift+P (Windows) and typing: 'install code ...'
+    - ![image](https://user-images.githubusercontent.com/88994767/151102867-8c48ad74-4a43-4f90-8e15-bfbc1b5a26a5.png)
+    - Rerun your command to install extensions
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Support Docker local
 
-### `npm run build`
+- start
+  ```
+    docker-compose up
+  ```
+- stop
+  ```
+    docker-compose stop
+  ```
+- build
+  ```
+    docker-compose build
+  ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## To build and start production in local
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```
+  cp .env.development .env.local
+  yarn build && yarn start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+note: .local file is ignore by .gitignore
 
-### `npm run eject`
+## To test all
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+- develop test code
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```
+  yarn test:dev
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+- update snapshot
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+```
+  yarn test:update
+```
 
-## Learn More
+- test all
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+```
+  yarn test
+```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## To test one file
+
+- test one file (also snapshot)
+
+```
+  yarn test:one <path>
+```
+
+## Memo: Use to setup project, use in CAUTIONS
+
+- Export all extensions:
+  ```bash
+    code --list-extensions > .vscode/extensions
+  ```

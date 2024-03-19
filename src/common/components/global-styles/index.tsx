@@ -4,6 +4,10 @@ export const GlobalStyles = createGlobalStyle`
   html {
     --ant-error-color: #f5222d;
   }
+  
+  body {
+      margin: 0;
+  }
 
   td.ant-table-column-sort {
     background-color: unset;
@@ -76,7 +80,6 @@ export const GlobalStyles = createGlobalStyle`
     font-family: Roboto, 'Noto Sans JP', sans-serif;
     font-weight: 300;
     color: #333;
-      margin: 0;
     h1, h2, h3, h4, h5, h6 {
       color: #333;
       font-weight: 500;
@@ -93,13 +96,9 @@ export const GlobalStyles = createGlobalStyle`
     .eui-wrapper {
       font-family: inherit;
       font-weight: inherit;
+      color: inherit;
       font-size: inherit;
       line-height: inherit;
     }
-  }
-
-  /* ANTD TOOLTIP */
-  .ant-tooltip {
-    max-width: initial;
   }
 `
