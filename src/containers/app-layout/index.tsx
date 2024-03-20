@@ -1,7 +1,8 @@
 import { PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
-import LeftMenu from './left-menu'
+import { ChooseLanguage } from './components/choose-language'
+import { LeftMenu } from './components/left-menu'
 
 export type LayoutProps = {
   showMenu?: boolean
@@ -10,7 +11,10 @@ export type LayoutProps = {
 export function AppLayout({ showMenu, children }: PropsWithChildren<LayoutProps>) {
   return (
     <PageContainer>
-      <Header>Thai Duong Fulfillment</Header>
+      <Header>
+        <Logo>Thai Duong Fulfillment</Logo>
+        <ChooseLanguage />
+      </Header>
       <LayoutWrapper>
         {showMenu && <LeftMenu />}
         <PageContent>{children} </PageContent>
@@ -18,6 +22,12 @@ export function AppLayout({ showMenu, children }: PropsWithChildren<LayoutProps>
     </PageContainer>
   )
 }
+
+const Logo = styled.div`
+  font-size: 20px;
+  font-weight: bold;
+  color: lightseagreen;
+`
 
 const PageContainer = styled.div`
   overflow: hidden;
@@ -28,15 +38,14 @@ const PageContainer = styled.div`
 `
 
 const Header = styled.div`
-  position: fixed;
-  width: 100vw;
   display: flex;
+  justify-content: space-between;
+  width: 100vw;
   justify-items: center;
-  background-color: green;
-  height: 40px;
-  color: white;
+  border-bottom: 1px solid #e8e8e8;
+  height: 50px;
   align-items: center;
-  padding: 0 16px;
+  padding: 0 24px;
   z-index: 999;
 `
 
@@ -44,8 +53,7 @@ const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
   overflow: auto;
-  margin-top: 40px;
-  height: calc(100vh - 40px);
+  height: 100%;
 `
 
 const PageContent = styled.div`
