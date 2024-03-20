@@ -49,7 +49,7 @@ export const GlobalStyles = createGlobalStyle`
 
   #nprogress {
     .bar {
-      border-bottom: 2px solid #1890ff;
+      border-bottom: 1px solid #1890ff;
     }
 
     .peg {

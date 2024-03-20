@@ -1,0 +1,15 @@
+import '@testing-library/jest-dom'
+import 'styled-components/cssprop'
+
+import { ParamProcessType } from './query-param'
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/prefer-namespace-keyword
+  declare module SharedTypes {
+    export { ParamProcessType }
+  }
+}
+
+declare module 'react' {
+  type FC17<P = Record<string, unknown>> = React.FunctionComponent<React.PropsWithChildren<P>>
+}
