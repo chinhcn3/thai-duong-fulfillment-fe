@@ -3,7 +3,7 @@ import { OrderContainer } from '../containers/order'
 
 export default function Page() {
   return (
-    <AppLayout>
+    <AppLayout showMenu={true}>
       <OrderContainer />
     </AppLayout>
   )

@@ -3,12 +3,16 @@ import styled from 'styled-components'
 
 import LeftMenu from './left-menu'
 
-export function AppLayout({ children }: PropsWithChildren<any>) {
+export type LayoutProps = {
+  showMenu?: boolean
+}
+
+export function AppLayout({ showMenu, children }: PropsWithChildren<LayoutProps>) {
   return (
     <PageContainer>
       <Header>Thai Duong Fulfillment</Header>
       <LayoutWrapper>
-        <LeftMenu />
+        {showMenu && <LeftMenu />}
         <PageContent>{children} </PageContent>
       </LayoutWrapper>
     </PageContainer>
@@ -41,6 +45,7 @@ const LayoutWrapper = styled.div`
   flex-direction: row;
   overflow: auto;
   margin-top: 40px;
+  height: calc(100vh - 40px);
 `
 
 const PageContent = styled.div`

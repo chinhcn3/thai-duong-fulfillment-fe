@@ -3,7 +3,7 @@ import { DashBoardContainer } from '../containers/dash-board'
 
 export default function Page() {
   return (
-    <AppLayout>
+    <AppLayout showMenu={true}>
       <DashBoardContainer />
     </AppLayout>
   )
