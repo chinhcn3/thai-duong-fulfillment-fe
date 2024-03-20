@@ -5,15 +5,23 @@ import LeftMenu from './left-menu'
 
 export function AppLayout({ children }: PropsWithChildren<any>) {
   return (
-    <div>
+    <PageContainer>
       <Header>Thai Duong Fulfillment</Header>
       <LayoutWrapper>
         <LeftMenu />
-        <PageContainer>{children} </PageContainer>
+        <PageContent>{children} </PageContent>
       </LayoutWrapper>
-    </div>
+    </PageContainer>
   )
 }
+
+const PageContainer = styled.div`
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  overflow-y: unset;
+  height: 100vh;
+`
 
 const Header = styled.div`
   position: fixed;
@@ -31,12 +39,11 @@ const Header = styled.div`
 const LayoutWrapper = styled.div`
   display: flex;
   flex-direction: row;
-  height: 100%;
   overflow: auto;
-  padding-top: 40px;
+  margin-top: 40px;
 `
 
-const PageContainer = styled.div`
+const PageContent = styled.div`
   display: flex;
   flex-direction: column;
   flex: 1;

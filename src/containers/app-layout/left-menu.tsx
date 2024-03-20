@@ -69,6 +69,6 @@ const App: React.FC = () => {
 export default App
 
 const MenuWrapper = styled(Menu)`
-  height: 100vh;
+  height: 100%;
   overflow-y: auto;
 `
