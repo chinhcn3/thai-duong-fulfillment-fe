@@ -23,17 +23,13 @@
     "allowSyntheticDefaultImports": true,
     "typeRoots": [
       "./types",
-      "./pjc_common/frontend/shared/types",
       "./node_modules/@types"
     ]
   },
   "exclude": [
     "node_modules",
     ".next",
-    "out",
-    "jest/__snapshot__",
-    "jest/coverage",
-    "jest/junit"
+    "out"
   ],
   "include": [
     "next-env.d.ts",
